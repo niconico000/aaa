@@ -1,0 +1,25 @@
+//データソースの作成
+	DataSource ds;
+
+	// 初期化処理
+	public void init() throws ServletException {
+		try {
+			// 初期コンテキストを取得
+			InitialContext ic = new InitialContext();
+			// ルックアップしてデータソースを取得
+			ds = (DataSource) ic.lookup("java:comp/env/jdbc/searchman");
+		} catch (Exception e) {
+
+		}
+	}
+
+
+//--------------------------------------------------------------------------------
+
+			// データソースからConnectionを取得
+			conn = ds.getConnection();
+
+
+
+●接続数の確認
+show status like 'Threads_connected';
